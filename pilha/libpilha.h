@@ -3,6 +3,8 @@
 #ifndef _LIBpilha_t_H
 #define _LIBpilha_t_H
 
+#include <stdbool.h>
+
 typedef struct nodo {
     int dado;
     struct nodo *prox;
@@ -19,8 +21,14 @@ typedef struct pilha {
 */
 pilha_t *pilha_cria ();
 
-/* Desaloca toda memoria da pilha e faz pilha receber NULL. */
-void pilha_destroi (pilha_t **pilha);
+/* Retorna o numero de elementos da pilha, que pode ser 0. */
+int pilha_tamanho (pilha_t *pilha);
+
+/* Retorna 1 se pilha vazia, 0 em caso contrario. */ 
+bool pilha_vazia (pilha_t *pilha);
+
+/* Similar ao pop, mas retorna o elemento dado sem remove-lo. */
+int pilha_topo (pilha_t *pilha, int *dado); 
 
 /* 
  * Insere dado na pilha (politica LIFO). Retorna 1
@@ -35,13 +43,8 @@ int push (pilha_t *pilha, int dado);
 */
 int pop (pilha_t *pilha, int *dado);
  
-/* Similar ao pop, mas retorna o elemento dado sem remove-lo. */
-int pilha_topo (pilha_t *pilha, int *dado); 
+ /* Desaloca toda memoria da pilha e faz pilha receber NULL. */
+void pilha_destroi (pilha_t **pilha);
 
-/* Retorna o numero de elementos da pilha, que pode ser 0. */
-int pilha_tamanho (pilha_t *pilha);
-
-/* Retorna 1 se pilha vazia, 0 em caso contrario. */ 
-int pilha_vazia (pilha_t *pilha);
 
 #endif
