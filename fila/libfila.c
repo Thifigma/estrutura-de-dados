@@ -4,41 +4,39 @@
 
 fila_t *fila_cria()
 {
-    fila_t *fila;
+	fila_t *fila;
 
-    if (!(fila = malloc(sizeof(fila_t))))
-        return 0;
+    	/* Aloca um espaço em memoria do tamanho da estrutura fila_t. */
+	if (!(fila = malloc(sizeof(fila_t))))
+		return NULL;
+	
+	fila->cabeca = NULL;
+	fila->cauda = NULL;
 
-    fila->cabeca = NULL;
-    fila->cauda = NULL;
-    fila->tamanho = 0;
+	fila->tamanho = 0;
 
-    return fila;
+	return fila;
 }
 
-void fila_destroi(fila_t **fila)
+int fila_tamanho(fila_t *fila)
 {
-    nodo_t *aux;
+	return fila->tamanho;
+}
 
-    /* 
-     * Anda na fila em direção a cauda e
-     * vai removendo ate ser null
-    */
-    while (!(fila_vazia((*fila)))){
-        aux = (*fila)->cabeca;
-        (*fila)->cabeca = (*fila)->cabeca->prox;
-        (*fila)->tamanho--;
-        free(aux);
-    }
-
-    free((*fila));
-    (*fila) = NULL;
+bool fila_vazia(fila_t *fila)
+{
+	if ( !(fila->cabeca) && (fila_tamanho(fila) == 0) )
+		return true;
+	return false;
 }
 
 int enqueue(fila_t *fila, int dado)
 {
-    nodo_t *aux;
-    if (!(aux = malloc(sizeof(nodo_t))))
+    /* Cria um nodo auxiliar. */
+	nodo_t *aux;
+    
+	/* Aloca um espaço de memoria do tamanho do nodo_t. */
+	if (!(aux = malloc(sizeof(nodo_t))))
         return 0;
 
     aux->dado = dado;
@@ -60,7 +58,7 @@ int enqueue(fila_t *fila, int dado)
 
 int dequeue(fila_t *fila, int *dado)
 {
-    nodo_t *aux;
+	nodo_t *aux;
 
     if (fila_vazia(fila))
         return 0;
@@ -78,14 +76,20 @@ int dequeue(fila_t *fila, int *dado)
     return 1;
 }
 
-int fila_tamanho(fila_t *fila)
+void fila_destroi(fila_t **fila)
 {
-    return fila->tamanho;
-}
+    nodo_t *aux;
 
-int fila_vazia(fila_t *fila)
-{
-    if (!(fila->cabeca))
-        return 1;
-    return 0;
+    /* 
+     * Anda na fila em direção a cauda e vai removendo ate ser null
+    */
+    while (!(fila_vazia((*fila)))){
+        aux = (*fila)->cabeca;
+        (*fila)->cabeca = (*fila)->cabeca->prox;
+        (*fila)->tamanho--;
+        free(aux);
+    }
+
+    free((*fila));
+    (*fila) = NULL;
 }
