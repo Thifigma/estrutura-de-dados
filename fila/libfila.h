@@ -7,6 +7,8 @@
 #ifndef _LIBfila_t_H
 #define _LIBfila_t_H
 
+#include <stdbool.h>
+
 typedef struct nodo {
     int dado;
     struct nodo *prox;
@@ -24,8 +26,11 @@ typedef struct fila {
 */
 fila_t *fila_cria ();
 
-/* Desaloca toda memoria da fila e faz fila receber NULL. */
-void fila_destroi (fila_t **fila);
+/* Retorna o numero de elementos da fila, que pode ser 0. */
+int fila_tamanho (fila_t *fila);
+
+/* Retorna verdadeiro se fila vazia, falso em caso contrario. */ 
+bool fila_vazia (fila_t *fila);
 
 /* 
  * Insere dado no final da fila (politica FIFO). Retorna 1
@@ -39,11 +44,8 @@ int enqueue (fila_t *fila, int dado);
  * A funcao retorna 1 em caso de sucesso e 0 no caso da fila estar vazia.
 */
 int dequeue (fila_t *fila, int *dado);
- 
-/* Retorna o numero de elementos da fila, que pode ser 0. */
-int fila_tamanho (fila_t *fila);
 
-/* Retorna 1 se fila vazia, 0 em caso contrario. */ 
-int fila_vazia (fila_t *fila);
+/* Desaloca toda memoria da fila e faz fila receber NULL. */
+void fila_destroi (fila_t **fila);
 
 #endif
