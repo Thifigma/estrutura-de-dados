@@ -1,0 +1,69 @@
+%Preambulo. 
+\documentclass[12pt, onecolumn]{article}
+
+%Pacotes. 
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel} 
+\usepackage[top=2cm, bottom=2cm, right=2cm, left=2cm]{geometry}
+
+
+%Inicio do documento.
+\begin{document}
+
+	\title{Estrutura de dados}
+	\author{Thiago Figueiredo Marcos}
+	\date{\today}
+	%Inclusão do titulo.
+	\maketitle
+
+	\begin{abstract}
+		Para permitir a organização dos dados na memória de maneira mais sofisticada
+		é necessário estrutura de dados complexas que represente conjuntos de determinado
+		dado e permita operações de manipulações de inserção e remoção por exemplo \\
+		\textbf{Palavras chave: } Estrutura de dados, Linguagem C.
+	\end{abstract}
+	
+	%Sumario. 
+	\begin{center}
+		\tableofcontents
+	\end{center}
+
+	\begin{center}
+		\section{Introdução}
+	\end{center}
+		A compreensão das estrutura de dados são fundamentais para construção de soluções
+		de problemas complexos, além da organização em si dos dados. No mundo analógico
+		essas construções se dão de forma "natural", como as filas de pessoas, ou as pilhas
+		de taréfas a serem feitas, também conseguimos ver no mundo abstrato a construção 
+		dessas estruturas como por exemplo um conjunto de números reais representado em 
+		uma estrutura de lista. Corriqueiramente representações do mundo real podem servir
+		como analogia para organização e estruturação dos dados, um exemplo são as árvores.
+
+	\section{Pilha}
+		A política que orienta as manipulações desse tipo de estrutura é chamado de
+		\textbf{LIFO}{\it Last in, First out}, ou seja, o último que entra é o primeiro
+		que sai, uma analogia do mundo prático é imaginar uma pilha de pratos, em seguida, 
+		posicionar seus olhos logo acima dos pratos, assim, só poderar retirar o que ve, que
+		no caso, é o ultimo prato que foi inserido na pilha.
+		\subsection{Inserção}
+			A inserção do dado é feito obrigatoriamente no topo da pilha.
+	
+			Algoritmo padrão de inserção. 
+
+			\begin{itemize}
+				\item {\bf Cria-se} a estrutura que representa o seu dado.
+				\item {\bf Aponte} o proximo dado para o topo.
+				\item {\bf Topo } apontara para o proximo dado.
+			\end{itemize}
+
+		\subsection{Remoção}
+			A remoção é feita obrigatoriamente no topo da pilha.
+
+			Algoritmo padrão de remoção
+
+			\begin{itemize}
+				\item {\bf Salve} o topo atual.
+				\item {\bf Aponte} o topo atual para o topo de baixo.
+				\item {\bf Libere} a memoria do dado que estava no topo.
+			\end{itemize}
+\end{document}
